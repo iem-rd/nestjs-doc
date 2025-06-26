@@ -1,0 +1,28 @@
+{
+  "name": "nestjs-doc",
+  "version": "0.0.1",
+  "description": "A NestJS module for documenting your project",
+  "main": "dist/doc.js",
+  "types": "dist/doc.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "publish": "npm publish --access public"
+  },
+  "keywords": [],
+  "author": "Julien Pouillard",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@nestjs/common": "^9.0.0",
+    "@nestjs/core": "^9.4.3",
+    "class-validator": "^0.14.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^4.0.0"
+  },
+  "files": [
+    "dist/**/*"
+  ]
+}
