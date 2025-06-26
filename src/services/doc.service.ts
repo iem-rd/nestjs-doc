@@ -1,4 +1,4 @@
-import { Injectable, OnModuleInit } from "@nestjs/common";
+import { Injectable, OnApplicationBootstrap } from "@nestjs/common";
 import { DiscoveryService, Reflector } from "@nestjs/core";
 import { getMetadataStorage } from "class-validator";
 import * as fs from "fs";
@@ -24,7 +24,7 @@ function serializeType(type: any): any {
   if (typeof type === "string") return type;
   if (type === String) return undefined;
   if (typeof type === "function") {
-    const name = type.name;
+    const name: string = type.name;
     if (name && !["Object", "Array", "Number", "Boolean"].includes(name)) {
       const allProps = getAllDtoProperties(type);
       return { type: name, properties: allProps };
@@ -45,13 +45,13 @@ function getPattern(handler: any, metadata: any) {
 }
 
 @Injectable()
-export class DocService implements OnModuleInit {
+export class DocService implements OnApplicationBootstrap {
   constructor(
     private readonly discoveryService: DiscoveryService,
     private readonly reflector: Reflector
   ) {}
 
-  onModuleInit() {
+  onApplicationBootstrap() {
     const controllers = this.discoveryService.getControllers();
 
     const docs = [];
