@@ -2,16 +2,31 @@
   "name": "nestjs-doc",
   "version": "0.0.1",
   "description": "A NestJS module for documenting your project",
-  "main": "dist/doc.js",
-  "types": "dist/doc.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build",
-    "publish": "npm publish --access public"
-  },
-  "keywords": [],
   "author": "Julien Pouillard",
   "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
+    "postversion": "git push && git push --tags"
+  },
+  "keywords": [
+    "nestjs",
+    "documentation",
+    "microservices",
+    "decorator",
+    "doc",
+    "nestjs-module",
+    "api-docs",
+    "typescript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "commonjs",
   "dependencies": {
     "@nestjs/common": "^9.0.0",
@@ -24,5 +39,13 @@
   },
   "files": [
     "dist/**/*"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iem-rd/nestjs-doc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iem-rd/nestjs-doc/issues"
+  },
+  "homepage": "https://github.com/iem-rd/nestjs-doc#readme"
 }
